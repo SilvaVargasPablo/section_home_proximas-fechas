@@ -92,7 +92,7 @@ export default function ProximasFechas() {
         {rounds.map((item, index) => (
           <div
             key={index}
-            className="flex items-center justify-between border-b border-white/20"
+            className="group flex items-center justify-between border-b border-white/20 transition-all duration-300 ease-in-out cursor-pointer"
             style={{
               height: "118px",
               paddingTop: "16px",
@@ -100,18 +100,30 @@ export default function ProximasFechas() {
               paddingLeft: "56px",
               paddingRight: "56px",
             }}
+            onMouseEnter={e => {
+              const el = e.currentTarget;
+              el.style.backgroundColor = "#FF3DCC";
+              el.style.height = "150px";
+              el.style.color = "#111111";
+            }}
+            onMouseLeave={e => {
+              const el = e.currentTarget;
+              el.style.backgroundColor = "transparent";
+              el.style.height = "118px";
+              el.style.color = "#ffffff";
+            }}
           >
             {/* Ronda */}
-            <span className="monument w-[100px] text-center" style={{ fontSize: "48px" }}>
+            <span className="monument w-[100px] text-center transition-colors duration-300" style={{ fontSize: "48px" }}>
               {item.ronda}
             </span>
 
             {/* Donde */}
             <div className="flex flex-col items-center justify-center flex-1">
-              <span className="monument uppercase text-center" style={{ fontSize: "11px", letterSpacing: "0.08em", opacity: 0.8 }}>
+              <span className="monument uppercase text-center transition-colors duration-300" style={{ fontSize: "11px", letterSpacing: "0.08em", opacity: 0.8 }}>
                 {item.titulo}
               </span>
-              <span className="bagiqu text-center">
+              <span className="bagiqu text-center transition-colors duration-300">
                 {item.ciudad}
               </span>
             </div>

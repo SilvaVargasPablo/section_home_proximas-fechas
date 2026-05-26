@@ -63,7 +63,10 @@ body {
   font-family: var(--font-sans);
 }
 
-/* ─── Tipografía ciudad: Bagiqu ─────────────────────────────── */
+/* ─── Hover filas tabla ─────────────────────────────────────── */
+.row-hover {
+  transition: background-color 0.3s ease, height 0.3s ease, color 0.3s ease;
+}
 .bagiqu {
   font-family: "Bagiqu", sans-serif;
   font-weight: 400;
