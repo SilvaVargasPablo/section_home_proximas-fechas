@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import modoRally from "../assets/img/modo-rally.png";
 
@@ -6,9 +8,11 @@ const rounds = [
   {
     ronda: "02",
     titulo: "COPEC RALLYMOBIL™",
-    ciudad: "LOS ANDES",
+    ciudad: "Los Andes",
     cuando: "10–12 Abr",
     distancia: "340",
+    hoverBg: "#ff51c5",
+    hoverText: "#111111",
   },
   {
     ronda: "03",
@@ -16,6 +20,8 @@ const rounds = [
     ciudad: "Copiapó",
     cuando: "15–17 May",
     distancia: "237",
+    hoverBg: "#ff9e03",
+    hoverText: "#111111",
   },
   {
     ronda: "04",
@@ -23,6 +29,8 @@ const rounds = [
     ciudad: "Pichilemu",
     cuando: "21–24 Jul",
     distancia: "189",
+    hoverBg: "#020eff",
+    hoverText: "#111111",
   },
   {
     ronda: "05",
@@ -30,6 +38,8 @@ const rounds = [
     ciudad: "Los Andes",
     cuando: "10–12 Abr",
     distancia: "340",
+    hoverBg: "#ff51c5",
+    hoverText: "#111111",
   },
 ];
 
@@ -85,11 +95,22 @@ export default function ProximasFechas() {
         {rounds.map((item, index) => (
           <div
             key={index}
-            className="flex items-center justify-between border-b border-white/20"
+            className="flex items-center justify-between border-b border-white/20 cursor-pointer"
             style={{
               height: "118px",
               paddingLeft: "56px",
               paddingRight: "56px",
+              transition: "height 0.3s ease, background-color 0.3s ease",
+            }}
+            onMouseEnter={e => {
+              (e.currentTarget as HTMLDivElement).style.height = "150px";
+              (e.currentTarget as HTMLDivElement).style.backgroundColor = item.hoverBg;
+              (e.currentTarget as HTMLDivElement).style.color = item.hoverText;
+            }}
+            onMouseLeave={e => {
+              (e.currentTarget as HTMLDivElement).style.height = "118px";
+              (e.currentTarget as HTMLDivElement).style.backgroundColor = "transparent";
+              (e.currentTarget as HTMLDivElement).style.color = "#ffffff";
             }}
           >
             {/* Ronda */}
