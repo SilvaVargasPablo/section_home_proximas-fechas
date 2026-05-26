@@ -1,3 +1,6 @@
+import Image from "next/image";
+import modoRally from "../assets/img/modo-rally.png";
+
 // Datos editables manualmente — reemplazables por respuesta de API
 const rounds = [
   {
@@ -43,30 +46,20 @@ export default function ProximasFechas() {
       >
         <h1
           className="monument whitespace-nowrap"
-          style={{ fontSize: "80px", lineHeight: "100%", letterSpacing: "0" }}
+          style={{ fontSize: "64px", fontWeight: 800, lineHeight: "100%", letterSpacing: "0" }}
         >
           Próximas fechas
         </h1>
 
-        {/* Badge */}
-        <div className="flex flex-col items-end gap-1">
-          <p className="monument uppercase" style={{ fontSize: "12px", lineHeight: "100%", letterSpacing: "0.1em" }}>
-            Enciende tu
-          </p>
-          <div className="flex items-center gap-1">
-            <span
-              className="monument uppercase border border-[#00F5C4] text-[#00F5C4]"
-              style={{ fontSize: "12px", padding: "4px 8px", lineHeight: "100%", letterSpacing: "0.1em" }}
-            >
-              Modo
-            </span>
-            <span
-              className="monument uppercase bg-[#00F5C4] text-black"
-              style={{ fontSize: "12px", padding: "4px 8px", lineHeight: "100%", letterSpacing: "0.1em" }}
-            >
-              Rally
-            </span>
-          </div>
+        {/* Badge Modo Rally */}
+        <div className="flex items-center">
+          <Image
+            src={modoRally}
+            alt="Enciende tu Modo Rally"
+            height={80}
+            style={{ height: "80px", width: "auto" }}
+            priority
+          />
         </div>
       </div>
 
@@ -82,10 +75,10 @@ export default function ProximasFechas() {
             paddingRight: "56px",
           }}
         >
-          <span className="monument w-[100px]" style={{ fontSize: "20px", height: "28px", display: "flex", alignItems: "center", justifyContent: "center" }}>Ronda</span>
-          <span className="monument flex-1" style={{ fontSize: "20px", height: "28px", display: "flex", alignItems: "center", justifyContent: "center" }}>Donde</span>
-          <span className="monument w-[240px]" style={{ fontSize: "20px", height: "28px", display: "flex", alignItems: "center", justifyContent: "center" }}>Cuando</span>
-          <span className="monument w-[180px] justify-end" style={{ fontSize: "20px", height: "28px", display: "flex", alignItems: "center", justifyContent: "center" }}>Distancia</span>
+          <span className="monument" style={{ fontSize: "20px", width: "160px" }}>Ronda</span>
+          <span className="monument" style={{ fontSize: "20px", width: "340px" }}>Donde</span>
+          <span className="monument" style={{ fontSize: "20px", width: "280px" }}>Cuando</span>
+          <span className="monument" style={{ fontSize: "20px", width: "200px", textAlign: "right" }}>Distancia</span>
         </div>
 
         {/* Filas */}
@@ -95,34 +88,32 @@ export default function ProximasFechas() {
             className="flex items-center justify-between border-b border-white/20"
             style={{
               height: "118px",
-              paddingTop: "16px",
-              paddingBottom: "16px",
               paddingLeft: "56px",
               paddingRight: "56px",
             }}
           >
             {/* Ronda */}
-            <span className="monument w-[100px] text-center" style={{ fontSize: "48px" }}>
+            <span className="monument" style={{ fontSize: "48px", width: "160px", flexShrink: 0 }}>
               {item.ronda}
             </span>
 
             {/* Donde */}
-            <div className="flex flex-col items-center justify-center flex-1">
-              <span className="monument uppercase text-center" style={{ fontSize: "11px", letterSpacing: "0.08em", opacity: 0.8 }}>
+            <div className="flex flex-col justify-center" style={{ width: "340px", flexShrink: 0 }}>
+              <span className="monument uppercase" style={{ fontSize: "11px", letterSpacing: "0.08em", opacity: 0.8 }}>
                 {item.titulo}
               </span>
-              <span className="bagiqu text-center">
+              <span className="bagiqu whitespace-nowrap">
                 {item.ciudad}
               </span>
             </div>
 
             {/* Cuando */}
-            <span className="monument w-[240px] text-center" style={{ fontSize: "32px" }}>
+            <span className="monument whitespace-nowrap" style={{ fontSize: "32px", width: "280px", flexShrink: 0 }}>
               {item.cuando}
             </span>
 
             {/* Distancia */}
-            <div className="flex items-baseline justify-center gap-1.5 w-[180px]">
+            <div className="flex items-baseline gap-1.5" style={{ width: "200px", flexShrink: 0, justifyContent: "flex-end" }}>
               <span className="monument" style={{ fontSize: "48px" }}>
                 {item.distancia}
               </span>
