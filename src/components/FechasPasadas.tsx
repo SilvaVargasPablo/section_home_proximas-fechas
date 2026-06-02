@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 // Datos editables manualmente — reemplazables por respuesta de API
 const rounds = [
   {
@@ -8,8 +10,9 @@ const rounds = [
     ciudad: "CURICÓ",
     cuando: "13–15 Mar",
     distancia: "176",
-    hoverBg: "#FF3DCC",
+    hoverBg: "#02ffd1",
     hoverText: "#111111",
+    url: "https://imagecolorpicker.com/es", // ← Reemplazar con la URL real
   },
 ];
 
@@ -51,24 +54,32 @@ export default function FechasPasadas() {
 
         {/* Filas */}
         {rounds.map((item, index) => (
-          <div
+          <Link
             key={index}
-            className="flex items-center justify-between border-b border-white/20 cursor-pointer"
+            href={item.url}
+            className="flex items-center justify-between border-b border-white/20 cursor-pointer group"
             style={{
               height: "118px",
               paddingLeft: "56px",
               paddingRight: "56px",
               transition: "height 0.3s ease, background-color 0.3s ease",
+              color: "#ffffff",
+              textDecoration: "none",
+              display: "flex",
             }}
             onMouseEnter={e => {
-              (e.currentTarget as HTMLDivElement).style.height = "150px";
-              (e.currentTarget as HTMLDivElement).style.backgroundColor = item.hoverBg;
-              (e.currentTarget as HTMLDivElement).style.color = item.hoverText;
+              (e.currentTarget as HTMLAnchorElement).style.height = "150px";
+              (e.currentTarget as HTMLAnchorElement).style.backgroundColor = item.hoverBg;
+              (e.currentTarget as HTMLAnchorElement).style.color = item.hoverText;
+              const arrow = e.currentTarget.querySelector(".arrow-icon") as HTMLElement;
+              if (arrow) arrow.style.opacity = "1";
             }}
             onMouseLeave={e => {
-              (e.currentTarget as HTMLDivElement).style.height = "118px";
-              (e.currentTarget as HTMLDivElement).style.backgroundColor = "transparent";
-              (e.currentTarget as HTMLDivElement).style.color = "#ffffff";
+              (e.currentTarget as HTMLAnchorElement).style.height = "118px";
+              (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "transparent";
+              (e.currentTarget as HTMLAnchorElement).style.color = "#ffffff";
+              const arrow = e.currentTarget.querySelector(".arrow-icon") as HTMLElement;
+              if (arrow) arrow.style.opacity = "0";
             }}
           >
             {/* Ronda */}
@@ -100,7 +111,30 @@ export default function FechasPasadas() {
                 km
               </span>
             </div>
-          </div>
+
+            {/* Flecha — visible solo en hover */}
+            <div
+              className="arrow-icon"
+              style={{
+                width: "48px",
+                height: "48px",
+                borderRadius: "50%",
+                border: "2px solid currentColor",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexShrink: 0,
+                marginLeft: "32px",
+                opacity: 0,
+                transition: "opacity 0.2s ease",
+              }}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="5" y1="19" x2="19" y2="5"/>
+                <polyline points="5 5 19 5 19 19"/>
+              </svg>
+            </div>
+          </Link>
         ))}
       </div>
     </section>
