@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 
 // Logos
@@ -26,30 +26,31 @@ import fordRojo from "../assets/img/ford_rojo.png";
 import ellipse from "../assets/img/Ellipse_00.png";
 
 const equipos = [
-  { nombre: "Prieto",                  logo: lamborghiniLogo, carImage: toyotaRosa,    bgColor: "#1a6b4a" },
-  { nombre: "Jokerally",               logo: lexusLogo,       carImage: shellAzul,     bgColor: "#2a7a8a" },
-  { nombre: "JRT",                     logo: lamborghiniLogo, carImage: redbullAzul,   bgColor: "#1a2e6b" },
-  { nombre: "Rosselot Team",           logo: lamborghiniLogo, carImage: toyotaRojo,    bgColor: "#b03080" },
-  { nombre: "Biobio Rally Team",       logo: lamborghiniLogo, carImage: shellRojo,     bgColor: "#c04020" },
-  { nombre: "KMR Motorsport",          logo: porsheLogo,      carImage: redbullDorado, bgColor: "#111111" },
-  { nombre: "Persia Motorsport",       logo: lamborghiniLogo, carImage: toyotaNegro,   bgColor: "#8b1a1a" },
-  { nombre: "SAG Rally Team",          logo: lamborghiniLogo, carImage: shellCeleste,  bgColor: "#1a4a8b" },
-  { nombre: "Conveyor belt technology",logo: roverLogo,       carImage: fordBlanco,    bgColor: "#2a5a7a" },
-  { nombre: "Domke Racing",            logo: peugeotLogo,     carImage: fordRojo,      bgColor: "#7a3ab0" },
+  { nombre: "Prieto",                  logo: lamborghiniLogo, carImage: toyotaRosa,    bgColor: "#1a6b4a", url: "/equipos/prieto" },
+  { nombre: "Jokerally",               logo: lexusLogo,       carImage: shellAzul,     bgColor: "#2a7a8a", url: "/equipos/jokerally" },
+  { nombre: "JRT",                     logo: lamborghiniLogo, carImage: redbullAzul,   bgColor: "#1a2e6b", url: "/equipos/jrt" },
+  { nombre: "Rosselot Team",           logo: lamborghiniLogo, carImage: toyotaRojo,    bgColor: "#b03080", url: "/equipos/rosselot-team" },
+  { nombre: "Biobio Rally Team",       logo: lamborghiniLogo, carImage: shellRojo,     bgColor: "#c04020", url: "/equipos/biobio-rally-team" },
+  { nombre: "KMR Motorsport",          logo: porsheLogo,      carImage: redbullDorado, bgColor: "#111111", url: "/equipos/kmr-motorsport" },
+  { nombre: "Persia Motorsport",       logo: lamborghiniLogo, carImage: toyotaNegro,   bgColor: "#8b1a1a", url: "/equipos/persia-motorsport" },
+  { nombre: "SAG Rally Team",          logo: lamborghiniLogo, carImage: shellCeleste,  bgColor: "#1a4a8b", url: "/equipos/sag-rally-team" },
+  { nombre: "Conveyor belt technology",logo: roverLogo,       carImage: fordBlanco,    bgColor: "#2a5a7a", url: "/equipos/conveyor-belt-technology" },
+  { nombre: "Domke Racing",            logo: peugeotLogo,     carImage: fordRojo,      bgColor: "#7a3ab0", url: "/equipos/domke-racing" },
 ];
 
 export default function EquiposSection() {
   const carRefs = useRef<HTMLDivElement[]>([]);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   return (
     <section
       className="bg-[#111111] text-white w-full"
-      style={{ maxWidth: "1440px", margin: "0 auto", paddingLeft: "56px", paddingRight: "56px", paddingBottom: "80px", position: "relative", overflow: "hidden" }}
+      style={{ maxWidth: "1440px", margin: "0 auto", paddingLeft: "56px", paddingRight: "56px", paddingBottom: "0", position: "relative", overflow: "hidden" }}
     >
       {/* Fondo elipse */}
       <div
         style={{
           position: "absolute",
-          top: 0,
+          top: 300,
           left: 0,
           width: "100%",
           height: "100%",
@@ -104,11 +105,16 @@ export default function EquiposSection() {
           justifyContent: "center",
           position: "relative",
           zIndex: 1,
+          paddingBottom: "40px",
+          zIndex: 1,
         }}
       >
         {equipos.map((equipo, index) => (
-          <div
+          <a
             key={index}
+            href={equipo.url}
+            target="_blank"
+            rel="noopener noreferrer"
             style={{
               backgroundColor: equipo.bgColor,
               borderRadius: "8px",
@@ -118,18 +124,45 @@ export default function EquiposSection() {
               height: "437px",
               cursor: "pointer",
               opacity: 1,
+              display: "block",
+              textDecoration: "none",
             }}
             onMouseEnter={() => {
+              setHoveredIndex(index);
               if (carRefs.current[index]) {
                 carRefs.current[index].style.transform = "scale(1.1) translateX(4%)";
               }
             }}
             onMouseLeave={() => {
+              setHoveredIndex(null);
               if (carRefs.current[index]) {
                 carRefs.current[index].style.transform = "scale(1) translateX(0)";
               }
             }}
           >
+            {/* Flecha top-right visible en hover */}
+            <div
+              style={{
+                position: "absolute",
+                top: "16px",
+                right: "16px",
+                zIndex: 3,
+                width: "44px",
+                height: "44px",
+                borderRadius: "50%",
+                border: "2px solid rgba(255,255,255,0.9)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                opacity: hoveredIndex === index ? 1 : 0,
+                transition: "opacity 0.3s ease",
+                backgroundColor: "rgba(255,255,255,0.1)",
+              }}
+            >
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 14L14 4M14 4H6M14 4V12" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
             {/* Capa superior: logo + nombre */}
             <div
               style={{
@@ -218,9 +251,22 @@ export default function EquiposSection() {
 
               {/* Sin sombra de piso — se usa drop-shadow en la imagen */}
             </div>
-          </div>
+          </a>
         ))}
       </div>
+
+      {/* Franja blanca inferior — las últimas cards la solapan */}
+      <div
+        style={{
+          position: "relative",
+          zIndex: 0,
+          width: "100vw",
+          marginLeft: "calc(-56px)",
+          height: "200px",
+          backgroundColor: "#ffffff",
+          marginTop: "-120px",
+        }}
+      />
     </section>
   );
 }
