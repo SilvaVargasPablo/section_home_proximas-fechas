@@ -149,7 +149,7 @@ export default function ProximasFechas() {
       {/* Checkered flag */}
       <div
         style={{
-          width: "1507px",
+          width: "100%",
           height: "137px",
           backgroundImage: "repeating-conic-gradient(#fff 0% 25%, #111 0% 50%)",
           backgroundSize: "48px 48px",

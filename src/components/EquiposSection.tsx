@@ -22,6 +22,9 @@ import shellCeleste from "../assets/img/shell_celeste.png";
 import fordBlanco from "../assets/img/ford_blanco.png";
 import fordRojo from "../assets/img/ford_rojo.png";
 
+// Fondo
+import ellipse from "../assets/img/Ellipse_00.png";
+
 const equipos = [
   { nombre: "Prieto",                  logo: lamborghiniLogo, carImage: toyotaRosa,    bgColor: "#1a6b4a" },
   { nombre: "Jokerally",               logo: lexusLogo,       carImage: shellAzul,     bgColor: "#2a7a8a" },
@@ -40,8 +43,30 @@ export default function EquiposSection() {
   return (
     <section
       className="bg-[#111111] text-white w-full"
-      style={{ maxWidth: "1440px", margin: "0 auto", paddingLeft: "56px", paddingRight: "56px", paddingBottom: "80px" }}
+      style={{ maxWidth: "1440px", margin: "0 auto", paddingLeft: "56px", paddingRight: "56px", paddingBottom: "80px", position: "relative", overflow: "hidden" }}
     >
+      {/* Fondo elipse */}
+      <div
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          width: "120%",
+          aspectRatio: "1 / 1",
+          zIndex: 0,
+          pointerEvents: "none",
+        }}
+      >
+        <Image
+          src={ellipse}
+          alt=""
+          fill
+          style={{ objectFit: "contain" }}
+          priority
+        />
+      </div>
+
       {/* Título */}
       <h2
         className="bagiqu"
@@ -53,6 +78,8 @@ export default function EquiposSection() {
           lineHeight: "1",
           paddingTop: "80px",
           paddingBottom: "48px",
+          position: "relative",
+          zIndex: 1,
         }}
       >
         Equipos
@@ -64,6 +91,9 @@ export default function EquiposSection() {
           display: "grid",
           gridTemplateColumns: "repeat(3, 396px)",
           gap: "16px",
+          justifyContent: "center",
+          position: "relative",
+          zIndex: 1,
         }}
       >
         {equipos.map((equipo, index) => (
