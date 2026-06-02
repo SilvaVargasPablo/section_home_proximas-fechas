@@ -49,11 +49,10 @@ export default function EquiposSection() {
       <div
         style={{
           position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          width: "120%",
-          aspectRatio: "1 / 1",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
           zIndex: 0,
           pointerEvents: "none",
         }}
@@ -62,34 +61,45 @@ export default function EquiposSection() {
           src={ellipse}
           alt=""
           fill
-          style={{ objectFit: "contain" }}
+          style={{ objectFit: "cover", objectPosition: "left center" }}
           priority
         />
       </div>
 
       {/* Título */}
-      <h2
-        className="bagiqu"
+      <div
         style={{
-          fontSize: "96px",
-          fontWeight: 400,
-          fontStyle: "italic",
-          color: "#00f5c4",
-          lineHeight: "1",
-          paddingTop: "80px",
-          paddingBottom: "48px",
+          width: "1312px",
+          height: "312px",
+          marginLeft: "51px",
           position: "relative",
           zIndex: 1,
+          opacity: 1,
+          display: "flex",
+          alignItems: "center",
         }}
       >
-        Equipos
-      </h2>
+        <h2
+          className="monument"
+          style={{
+            fontSize: "220px",
+            fontWeight: 800,
+            fontStyle: "italic",
+            color: "#00f5c4",
+            lineHeight: "100%",
+            letterSpacing: "0%",
+            margin: 0,
+          }}
+        >
+          Equipos
+        </h2>
+      </div>
 
       {/* Grid de cards */}
       <div
         style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 396px)",
+          display: "flex",
+          flexWrap: "wrap",
           gap: "16px",
           justifyContent: "center",
           position: "relative",
