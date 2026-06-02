@@ -1,49 +1,19 @@
 "use client";
 
-import Image from "next/image";
-import modoRally from "../assets/img/modo-rally.png";
-
 // Datos editables manualmente — reemplazables por respuesta de API
 const rounds = [
   {
-    ronda: "02",
+    ronda: "01",
     titulo: "COPEC RALLYMOBIL™",
-    ciudad: "Los Andes",
-    cuando: "10–12 Abr",
-    distancia: "340",
-    hoverBg: "#ff51c5",
-    hoverText: "#ffffff",
-  },
-  {
-    ronda: "03",
-    titulo: "COPEC RALLYMOBIL™",
-    ciudad: "Copiapó",
-    cuando: "15–17 May",
-    distancia: "237",
-    hoverBg: "#ff9e03",
+    ciudad: "CURICÓ",
+    cuando: "13–15 Mar",
+    distancia: "176",
+    hoverBg: "#FF3DCC",
     hoverText: "#111111",
-  },
-  {
-    ronda: "04",
-    titulo: "COPEC RALLYMOBIL™",
-    ciudad: "Pichilemu",
-    cuando: "21–24 Jul",
-    distancia: "189",
-    hoverBg: "#020eff",
-    hoverText: "#ffffff",
-  },
-  {
-    ronda: "05",
-    titulo: "COPEC RALLYMOBIL™",
-    ciudad: "Los Andes",
-    cuando: "10–12 Abr",
-    distancia: "340",
-    hoverBg: "#ff51c5",
-    hoverText: "#ffffff",
   },
 ];
 
-export default function ProximasFechas() {
+export default function FechasPasadas() {
   return (
     <section
       className="bg-[#111111] text-white w-full"
@@ -51,26 +21,14 @@ export default function ProximasFechas() {
     >
       {/* Header */}
       <div
-        className="flex items-center justify-between"
-        style={{ paddingTop: "103px", paddingBottom: "40px", paddingLeft: "56px", paddingRight: "56px" }}
+        style={{ paddingTop: "80px", paddingBottom: "40px", paddingLeft: "56px", paddingRight: "56px" }}
       >
-        <h1
+        <h2
           className="monument whitespace-nowrap"
           style={{ fontSize: "64px", fontWeight: 800, lineHeight: "100%", letterSpacing: "0" }}
         >
-          Próximas fechas
-        </h1>
-
-        {/* Badge Modo Rally */}
-        <div className="flex items-center">
-          <Image
-            src={modoRally}
-            alt="Enciende tu Modo Rally"
-            height={80}
-            style={{ height: "80px", width: "auto" }}
-            priority
-          />
-        </div>
+          Fechas pasadas
+        </h2>
       </div>
 
       {/* Tabla */}
@@ -145,16 +103,6 @@ export default function ProximasFechas() {
           </div>
         ))}
       </div>
-
-      {/* Checkered flag */}
-      <div
-        style={{
-          width: "1507px",
-          height: "137px",
-          backgroundImage: "repeating-conic-gradient(#fff 0% 25%, #111 0% 50%)",
-          backgroundSize: "48px 48px",
-        }}
-      />
     </section>
   );
 }
