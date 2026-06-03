@@ -39,22 +39,22 @@ export default function FechasPasadas() {
       <div className="w-full">
         {/* Encabezados de columna */}
         <div
-          className="table-col-headers items-center justify-between border-b border-white/20 section-px"
+          className="table-col-headers items-center border-b border-white/20 section-px"
           style={{ paddingTop: "16px", paddingBottom: "16px" }}
         >
-          <span className="monument" style={{ fontSize: "20px", width: "160px" }}>Ronda</span>
-          <span className="monument" style={{ fontSize: "20px", width: "340px" }}>Donde</span>
-          <span className="monument" style={{ fontSize: "20px", width: "280px" }}>Cuando</span>
-          <span className="monument" style={{ fontSize: "20px", width: "200px", textAlign: "right" }}>Distancia</span>
+          <span className="monument col-ronda" style={{ fontSize: "14px" }}>Ronda</span>
+          <span className="monument col-donde" style={{ fontSize: "14px" }}>Donde</span>
+          <span className="monument col-cuando" style={{ fontSize: "14px" }}>Cuando</span>
+          <span className="monument col-dist flex" style={{ fontSize: "14px", textAlign: "right" }}>Distancia</span>
         </div>
 
         {/* Filas */}
         {rounds.map((item, index) => (
           <div key={index} className="border-b border-white/20">
-            {/* Layout DESKTOP (4 columnas) */}
+            {/* Layout DESKTOP/TABLET (4 columnas responsivas) */}
             <Link
               href={item.url}
-              className="table-row-desktop items-center justify-between section-px group"
+              className="table-row-desktop items-center section-px group"
               style={{
                 height: "118px",
                 transition: "height 0.3s ease, background-color 0.3s ease",
@@ -76,34 +76,30 @@ export default function FechasPasadas() {
                 if (arrow) arrow.style.opacity = "0";
               }}
             >
-              <span className="monument" style={{ fontSize: "48px", width: "160px", flexShrink: 0 }}>
-                {item.ronda}
-              </span>
-              <div className="flex flex-col justify-center" style={{ width: "340px", flexShrink: 0 }}>
-                <span className="monument uppercase" style={{ fontSize: "11px", letterSpacing: "0.08em", opacity: 0.8 }}>
+              <span className="monument row-font-ronda col-ronda">{item.ronda}</span>
+              <div className="col-donde flex flex-col justify-center">
+                <span className="monument uppercase" style={{ fontSize: "10px", letterSpacing: "0.08em", opacity: 0.8 }}>
                   {item.titulo}
                 </span>
                 <span className="bagiqu whitespace-nowrap">{item.ciudad}</span>
               </div>
-              <span className="monument whitespace-nowrap" style={{ fontSize: "32px", width: "280px", flexShrink: 0 }}>
-                {item.cuando}
-              </span>
-              <div className="flex items-baseline gap-1.5" style={{ width: "200px", flexShrink: 0, justifyContent: "flex-end" }}>
-                <span className="monument" style={{ fontSize: "48px" }}>{item.distancia}</span>
+              <span className="monument col-cuando" style={{ fontSize: "24px" }}>{item.cuando}</span>
+              <div className="col-dist flex items-baseline gap-1.5">
+                <span className="monument row-font-dist">{item.distancia}</span>
                 <span className="monument uppercase" style={{ fontSize: "12px", opacity: 0.7 }}>km</span>
               </div>
               {/* Flecha */}
               <div
                 className="arrow-icon"
                 style={{
-                  width: "48px", height: "48px", borderRadius: "50%",
+                  width: "40px", height: "40px", borderRadius: "50%",
                   border: "2px solid currentColor", display: "flex",
                   alignItems: "center", justifyContent: "center",
-                  flexShrink: 0, marginLeft: "32px", opacity: 0,
+                  flexShrink: 0, marginLeft: "16px", opacity: 0,
                   transition: "opacity 0.2s ease",
                 }}
               >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="5" y1="19" x2="19" y2="5"/>
                   <polyline points="5 5 19 5 19 19"/>
                 </svg>
@@ -114,27 +110,17 @@ export default function FechasPasadas() {
             <Link
               href={item.url}
               className="table-row-mobile items-center justify-between section-px"
-              style={{
-                minHeight: "80px",
-                paddingTop: "12px",
-                paddingBottom: "12px",
-                color: "#ffffff",
-                textDecoration: "none",
-              }}
+              style={{ minHeight: "72px", paddingTop: "12px", paddingBottom: "12px", color: "#ffffff", textDecoration: "none" }}
             >
-              <span className="monument" style={{ fontSize: "32px", width: "48px", flexShrink: 0 }}>
-                {item.ronda}
-              </span>
+              <span className="monument" style={{ fontSize: "28px", width: "44px", flexShrink: 0 }}>{item.ronda}</span>
               <div className="flex flex-col justify-center flex-1 mx-3">
-                <span className="monument uppercase" style={{ fontSize: "9px", letterSpacing: "0.08em", opacity: 0.7 }}>
-                  {item.titulo}
-                </span>
+                <span className="monument uppercase" style={{ fontSize: "9px", letterSpacing: "0.08em", opacity: 0.7 }}>{item.titulo}</span>
                 <span className="bagiqu whitespace-nowrap">{item.ciudad}</span>
               </div>
               <div className="flex flex-col items-end" style={{ flexShrink: 0 }}>
-                <span className="monument" style={{ fontSize: "16px" }}>{item.cuando}</span>
+                <span className="monument" style={{ fontSize: "14px" }}>{item.cuando}</span>
                 <div className="flex items-baseline gap-1">
-                  <span className="monument" style={{ fontSize: "20px" }}>{item.distancia}</span>
+                  <span className="monument" style={{ fontSize: "18px" }}>{item.distancia}</span>
                   <span className="monument uppercase" style={{ fontSize: "10px", opacity: 0.7 }}>km</span>
                 </div>
               </div>

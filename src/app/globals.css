@@ -126,12 +126,35 @@ body {
   .table-row-mobile { display: flex; }
 }
 
+/* Columnas tabla — anchos fijos en desktop, proporcionales en tablet */
+.col-ronda   { width: 160px; flex-shrink: 0; }
+.col-donde   { width: 340px; flex-shrink: 0; }
+.col-cuando  { width: 280px; flex-shrink: 0; }
+.col-dist    { width: 200px; flex-shrink: 0; justify-content: flex-end; }
+
+@media (max-width: 1023px) {
+  .col-ronda  { width: 10%; min-width: 48px; }
+  .col-donde  { width: 35%; }
+  .col-cuando { width: 25%; }
+  .col-dist   { width: 20%; min-width: 60px; }
+}
+
+/* Tamaños de fuente en filas — reducir en tablet */
+.row-font-ronda   { font-size: 48px; }
+.row-font-ciudad  { font-size: 32px; }
+.row-font-dist    { font-size: 48px; }
+@media (max-width: 1023px) {
+  .row-font-ronda  { font-size: 28px; }
+  .row-font-ciudad { font-size: 22px; }
+  .row-font-dist   { font-size: 28px; }
+}
+
 /* Bagiqu ciudad responsivo */
 @media (max-width: 1023px) {
-  .bagiqu { font-size: 28px; }
+  .bagiqu { font-size: 22px; }
 }
 @media (max-width: 639px) {
-  .bagiqu { font-size: 22px; }
+  .bagiqu { font-size: 18px; }
 }
 
 /* ─── Responsive: Equipos Section ──────────────────────────── */
