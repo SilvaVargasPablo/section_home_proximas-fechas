@@ -43,8 +43,8 @@ export default function EquiposSection() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   return (
     <section
-      className="bg-[#111111] text-white w-full"
-      style={{ maxWidth: "1440px", margin: "0 auto", paddingLeft: "56px", paddingRight: "56px", paddingBottom: "0", position: "relative", overflow: "hidden" }}
+      className="bg-[#111111] text-white w-full section-px"
+      style={{ maxWidth: "1440px", margin: "0 auto", paddingBottom: "0", position: "relative", overflow: "hidden" }}
     >
       {/* Fondo elipse */}
       <div
@@ -69,10 +69,12 @@ export default function EquiposSection() {
 
       {/* Título */}
       <div
+        className="equipo-title-container"
         style={{
-          width: "1312px",
-          height: "312px",
-          marginLeft: "51px",
+          height: "auto",
+          minHeight: "120px",
+          paddingTop: "40px",
+          paddingBottom: "32px",
           position: "relative",
           zIndex: 1,
           opacity: 1,
@@ -81,9 +83,8 @@ export default function EquiposSection() {
         }}
       >
         <h2
-          className="monument"
+          className="monument equipo-title"
           style={{
-            fontSize: "220px",
             fontWeight: 800,
             fontStyle: "italic",
             color: "#00f5c4",
@@ -106,7 +107,6 @@ export default function EquiposSection() {
           position: "relative",
           zIndex: 1,
           paddingBottom: "40px",
-          zIndex: 1,
         }}
       >
         {equipos.map((equipo, index) => (
@@ -115,13 +115,12 @@ export default function EquiposSection() {
             href={equipo.url}
             target="_blank"
             rel="noopener noreferrer"
+            className="equipo-card"
             style={{
               backgroundColor: equipo.bgColor,
               borderRadius: "8px",
               overflow: "hidden",
               position: "relative",
-              width: "396px",
-              height: "437px",
               cursor: "pointer",
               opacity: 1,
               display: "block",

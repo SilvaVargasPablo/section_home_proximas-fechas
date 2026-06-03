@@ -80,3 +80,93 @@ body {
   line-height: 100%;
   letter-spacing: 0%;
 }
+
+/* ─── Responsive: sección padding horizontal ───────────────── */
+.section-px {
+  padding-left: 56px;
+  padding-right: 56px;
+}
+@media (max-width: 1023px) {
+  .section-px { padding-left: 32px; padding-right: 32px; }
+}
+@media (max-width: 639px) {
+  .section-px { padding-left: 16px; padding-right: 16px; }
+}
+
+/* ─── Responsive: título secciones de tabla ─────────────────── */
+.section-heading {
+  font-size: 64px;
+}
+@media (max-width: 1023px) {
+  .section-heading { font-size: 48px; }
+}
+@media (max-width: 639px) {
+  .section-heading { font-size: 32px; }
+}
+
+/* ─── Responsive: filas de tabla ───────────────────────────── */
+/* Ocultar encabezados de columna en mobile */
+.table-col-headers {
+  display: flex;
+}
+@media (max-width: 639px) {
+  .table-col-headers { display: none; }
+}
+
+/* Layout desktop de la fila (4 columnas) */
+.table-row-desktop {
+  display: flex;
+}
+/* Layout mobile de la fila (apilado en 2 líneas) */
+.table-row-mobile {
+  display: none;
+}
+@media (max-width: 639px) {
+  .table-row-desktop { display: none; }
+  .table-row-mobile { display: flex; }
+}
+
+/* Bagiqu ciudad responsivo */
+@media (max-width: 1023px) {
+  .bagiqu { font-size: 28px; }
+}
+@media (max-width: 639px) {
+  .bagiqu { font-size: 22px; }
+}
+
+/* ─── Responsive: Equipos Section ──────────────────────────── */
+.equipo-title {
+  font-size: 220px;
+}
+@media (max-width: 1023px) {
+  .equipo-title { font-size: 120px; }
+}
+@media (max-width: 639px) {
+  .equipo-title { font-size: 64px; }
+}
+
+.equipo-title-container {
+  width: 1312px;
+  max-width: 100%;
+  margin-left: 51px;
+}
+@media (max-width: 1023px) {
+  .equipo-title-container { margin-left: 0; width: 100%; }
+}
+
+.equipo-card {
+  width: 396px;
+  height: 437px;
+}
+@media (max-width: 1023px) {
+  .equipo-card {
+    width: calc(50% - 8px);
+    height: 340px;
+  }
+}
+@media (max-width: 639px) {
+  .equipo-card {
+    width: 100%;
+    height: 300px;
+  }
+}

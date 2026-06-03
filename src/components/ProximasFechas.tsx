@@ -51,18 +51,18 @@ export default function ProximasFechas() {
     >
       {/* Header */}
       <div
-        className="flex items-center justify-between"
-        style={{ paddingTop: "103px", paddingBottom: "40px", paddingLeft: "56px", paddingRight: "56px" }}
+        className="section-px flex items-center justify-between"
+        style={{ paddingTop: "103px", paddingBottom: "40px" }}
       >
         <h1
-          className="monument whitespace-nowrap"
-          style={{ fontSize: "64px", fontWeight: 800, lineHeight: "100%", letterSpacing: "0" }}
+          className="monument section-heading whitespace-nowrap"
+          style={{ fontWeight: 800, lineHeight: "100%", letterSpacing: "0" }}
         >
           Próximas fechas
         </h1>
 
-        {/* Badge Modo Rally */}
-        <div className="flex items-center">
+        {/* Badge Modo Rally — oculto en mobile */}
+        <div className="hidden sm:flex items-center">
           <Image
             src={modoRally}
             alt="Enciende tu Modo Rally"
@@ -77,13 +77,8 @@ export default function ProximasFechas() {
       <div className="w-full">
         {/* Encabezados de columna */}
         <div
-          className="flex items-center justify-between border-b border-white/20"
-          style={{
-            paddingTop: "16px",
-            paddingBottom: "16px",
-            paddingLeft: "56px",
-            paddingRight: "56px",
-          }}
+          className="table-col-headers items-center justify-between border-b border-white/20 section-px"
+          style={{ paddingTop: "16px", paddingBottom: "16px" }}
         >
           <span className="monument" style={{ fontSize: "20px", width: "160px" }}>Ronda</span>
           <span className="monument" style={{ fontSize: "20px", width: "340px" }}>Donde</span>
@@ -93,54 +88,70 @@ export default function ProximasFechas() {
 
         {/* Filas */}
         {rounds.map((item, index) => (
-          <div
-            key={index}
-            className="flex items-center justify-between border-b border-white/20 cursor-pointer"
-            style={{
-              height: "118px",
-              paddingLeft: "56px",
-              paddingRight: "56px",
-              transition: "height 0.3s ease, background-color 0.3s ease",
-            }}
-            onMouseEnter={e => {
-              (e.currentTarget as HTMLDivElement).style.height = "150px";
-              (e.currentTarget as HTMLDivElement).style.backgroundColor = item.hoverBg;
-              (e.currentTarget as HTMLDivElement).style.color = item.hoverText;
-            }}
-            onMouseLeave={e => {
-              (e.currentTarget as HTMLDivElement).style.height = "118px";
-              (e.currentTarget as HTMLDivElement).style.backgroundColor = "transparent";
-              (e.currentTarget as HTMLDivElement).style.color = "#ffffff";
-            }}
-          >
-            {/* Ronda */}
-            <span className="monument" style={{ fontSize: "48px", width: "160px", flexShrink: 0 }}>
-              {item.ronda}
-            </span>
-
-            {/* Donde */}
-            <div className="flex flex-col justify-center" style={{ width: "340px", flexShrink: 0 }}>
-              <span className="monument uppercase" style={{ fontSize: "11px", letterSpacing: "0.08em", opacity: 0.8 }}>
-                {item.titulo}
+          <div key={index} className="border-b border-white/20 cursor-pointer">
+            {/* Layout DESKTOP (4 columnas) */}
+            <div
+              className="table-row-desktop items-center justify-between section-px"
+              style={{
+                height: "118px",
+                transition: "height 0.3s ease, background-color 0.3s ease",
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLDivElement).style.height = "150px";
+                (e.currentTarget as HTMLDivElement).style.backgroundColor = item.hoverBg;
+                (e.currentTarget as HTMLDivElement).style.color = item.hoverText;
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLDivElement).style.height = "118px";
+                (e.currentTarget as HTMLDivElement).style.backgroundColor = "transparent";
+                (e.currentTarget as HTMLDivElement).style.color = "#ffffff";
+              }}
+            >
+              <span className="monument" style={{ fontSize: "48px", width: "160px", flexShrink: 0 }}>
+                {item.ronda}
               </span>
-              <span className="bagiqu whitespace-nowrap">
-                {item.ciudad}
+              <div className="flex flex-col justify-center" style={{ width: "340px", flexShrink: 0 }}>
+                <span className="monument uppercase" style={{ fontSize: "11px", letterSpacing: "0.08em", opacity: 0.8 }}>
+                  {item.titulo}
+                </span>
+                <span className="bagiqu whitespace-nowrap">{item.ciudad}</span>
+              </div>
+              <span className="monument whitespace-nowrap" style={{ fontSize: "32px", width: "280px", flexShrink: 0 }}>
+                {item.cuando}
               </span>
+              <div className="flex items-baseline gap-1.5" style={{ width: "200px", flexShrink: 0, justifyContent: "flex-end" }}>
+                <span className="monument" style={{ fontSize: "48px" }}>{item.distancia}</span>
+                <span className="monument uppercase" style={{ fontSize: "12px", opacity: 0.7 }}>km</span>
+              </div>
             </div>
 
-            {/* Cuando */}
-            <span className="monument whitespace-nowrap" style={{ fontSize: "32px", width: "280px", flexShrink: 0 }}>
-              {item.cuando}
-            </span>
-
-            {/* Distancia */}
-            <div className="flex items-baseline gap-1.5" style={{ width: "200px", flexShrink: 0, justifyContent: "flex-end" }}>
-              <span className="monument" style={{ fontSize: "48px" }}>
-                {item.distancia}
+            {/* Layout MOBILE (apilado) */}
+            <div
+              className="table-row-mobile items-center justify-between section-px"
+              style={{
+                minHeight: "80px",
+                paddingTop: "12px",
+                paddingBottom: "12px",
+                backgroundColor: "transparent",
+                color: "#ffffff",
+              }}
+            >
+              <span className="monument" style={{ fontSize: "32px", width: "48px", flexShrink: 0 }}>
+                {item.ronda}
               </span>
-              <span className="monument uppercase" style={{ fontSize: "12px", opacity: 0.7 }}>
-                km
-              </span>
+              <div className="flex flex-col justify-center flex-1 mx-3">
+                <span className="monument uppercase" style={{ fontSize: "9px", letterSpacing: "0.08em", opacity: 0.7 }}>
+                  {item.titulo}
+                </span>
+                <span className="bagiqu whitespace-nowrap">{item.ciudad}</span>
+              </div>
+              <div className="flex flex-col items-end" style={{ flexShrink: 0 }}>
+                <span className="monument" style={{ fontSize: "16px" }}>{item.cuando}</span>
+                <div className="flex items-baseline gap-1">
+                  <span className="monument" style={{ fontSize: "20px" }}>{item.distancia}</span>
+                  <span className="monument uppercase" style={{ fontSize: "10px", opacity: 0.7 }}>km</span>
+                </div>
+              </div>
             </div>
           </div>
         ))}
