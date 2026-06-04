@@ -67,16 +67,29 @@ export default function EquiposSection() {
         />
       </div>
 
+      {/* Wrapper alineador: título + grid con mismo ancho */}
+      <div
+        className="equipo-content-wrapper"
+        style={{
+          maxWidth: "1220px",
+          width: "100%",
+          margin: "0 auto",
+          position: "relative",
+          zIndex: 1,
+        }}
+      >
+
       {/* Título */}
       <div
         className="equipo-title-container"
         style={{
           height: "auto",
           minHeight: "120px",
+          marginTop: "60px",
+          marginBottom: "60px",
           paddingTop: "40px",
           paddingBottom: "32px",
           position: "relative",
-          zIndex: 1,
           opacity: 1,
           display: "flex",
           alignItems: "center",
@@ -104,8 +117,6 @@ export default function EquiposSection() {
           flexWrap: "wrap",
           gap: "16px",
           justifyContent: "center",
-          position: "relative",
-          zIndex: 1,
           paddingBottom: "40px",
         }}
       >
@@ -253,6 +264,8 @@ export default function EquiposSection() {
           </a>
         ))}
       </div>
+
+      </div>{/* /equipo-content-wrapper */}
 
       {/* Franja blanca inferior — las últimas cards la solapan */}
       <div

@@ -170,22 +170,21 @@ body {
   .equipo-white-stripe { margin-left: -16px; margin-right: -16px; }
 }
 .equipo-title {
-  font-size: 220px;
+  font-size: clamp(36px, 13vw, 170px);
+  white-space: nowrap;
 }
-@media (max-width: 1023px) {
-  .equipo-title { font-size: 120px; }
-}
-@media (max-width: 639px) {
-  .equipo-title { font-size: 64px; }
-}
+/* Remove old breakpoint overrides — clamp handles all sizes */
 
 .equipo-title-container {
-  width: 1312px;
-  max-width: 100%;
-  margin-left: 51px;
+  width: 100%;
+  justify-content: center;
 }
-@media (max-width: 1023px) {
-  .equipo-title-container { margin-left: 0; width: 100%; }
+
+@media (max-width: 639px) {
+  .equipo-title-container {
+    margin-top: 20px;    /* Cambia estos valores según necesites */
+    margin-bottom: 20px;
+  }
 }
 
 .equipo-card {
