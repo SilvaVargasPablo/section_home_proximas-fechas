@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
   },
   basePath: isGithubPages ? `/${repoName}` : "",
   assetPrefix: isGithubPages ? `/${repoName}/` : undefined,
+  devIndicators: false,
 };
 
 export default nextConfig;

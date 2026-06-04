@@ -256,11 +256,10 @@ export default function EquiposSection() {
 
       {/* Franja blanca inferior — las últimas cards la solapan */}
       <div
+        className="equipo-white-stripe"
         style={{
           position: "relative",
           zIndex: 0,
-          width: "100vw",
-          marginLeft: "calc(-56px)",
           height: "200px",
           backgroundColor: "#ffffff",
           marginTop: "-120px",

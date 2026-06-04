@@ -55,7 +55,7 @@ export default function ProximasFechas() {
         style={{ paddingTop: "103px", paddingBottom: "40px" }}
       >
         <h1
-          className="monument section-heading whitespace-nowrap"
+          className="monument section-heading"
           style={{ fontWeight: 800, lineHeight: "100%", letterSpacing: "0" }}
         >
           Próximas fechas
@@ -77,7 +77,7 @@ export default function ProximasFechas() {
       <div className="w-full">
         {/* Encabezados de columna */}
         <div
-          className="table-col-headers items-center border-b border-white/20 section-px"
+          className="table-col-headers items-center justify-between border-b border-white/20 section-px"
           style={{ paddingTop: "16px", paddingBottom: "16px" }}
         >
           <span className="monument col-ronda" style={{ fontSize: "14px" }}>Ronda</span>
@@ -91,7 +91,7 @@ export default function ProximasFechas() {
           <div key={index} className="border-b border-white/20 cursor-pointer">
             {/* Layout DESKTOP/TABLET (4 columnas responsivas) */}
             <div
-              className="table-row-desktop items-center section-px"
+              className="table-row-desktop items-center justify-between section-px"
               style={{
                 height: "118px",
                 transition: "height 0.3s ease, background-color 0.3s ease",

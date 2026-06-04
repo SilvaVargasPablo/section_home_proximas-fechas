@@ -28,7 +28,7 @@ export default function FechasPasadas() {
         style={{ paddingTop: "80px", paddingBottom: "40px" }}
       >
         <h2
-          className="monument section-heading whitespace-nowrap"
+          className="monument section-heading"
           style={{ fontWeight: 800, lineHeight: "100%", letterSpacing: "0" }}
         >
           Fechas pasadas
@@ -39,7 +39,7 @@ export default function FechasPasadas() {
       <div className="w-full">
         {/* Encabezados de columna */}
         <div
-          className="table-col-headers items-center border-b border-white/20 section-px"
+          className="table-col-headers items-center justify-between border-b border-white/20 section-px"
           style={{ paddingTop: "16px", paddingBottom: "16px" }}
         >
           <span className="monument col-ronda" style={{ fontSize: "14px" }}>Ronda</span>
@@ -54,7 +54,7 @@ export default function FechasPasadas() {
             {/* Layout DESKTOP/TABLET (4 columnas responsivas) */}
             <Link
               href={item.url}
-              className="table-row-desktop items-center section-px group"
+              className="table-row-desktop items-center justify-between section-px group"
               style={{
                 height: "118px",
                 transition: "height 0.3s ease, background-color 0.3s ease",
@@ -84,25 +84,29 @@ export default function FechasPasadas() {
                 <span className="bagiqu whitespace-nowrap">{item.ciudad}</span>
               </div>
               <span className="monument col-cuando" style={{ fontSize: "24px" }}>{item.cuando}</span>
-              <div className="col-dist flex items-baseline gap-1.5">
+              <div className="col-dist flex items-baseline gap-1.5" style={{ position: "relative" }}>
                 <span className="monument row-font-dist">{item.distancia}</span>
                 <span className="monument uppercase" style={{ fontSize: "12px", opacity: 0.7 }}>km</span>
-              </div>
-              {/* Flecha */}
-              <div
-                className="arrow-icon"
-                style={{
-                  width: "40px", height: "40px", borderRadius: "50%",
-                  border: "2px solid currentColor", display: "flex",
-                  alignItems: "center", justifyContent: "center",
-                  flexShrink: 0, marginLeft: "16px", opacity: 0,
-                  transition: "opacity 0.2s ease",
-                }}
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="5" y1="19" x2="19" y2="5"/>
-                  <polyline points="5 5 19 5 19 19"/>
-                </svg>
+                {/* Flecha — visible solo en hover */}
+                <div
+                  className="arrow-icon"
+                  style={{
+                    position: "absolute",
+                    right: "-56px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    width: "40px", height: "40px", borderRadius: "50%",
+                    border: "2px solid currentColor", display: "flex",
+                    alignItems: "center", justifyContent: "center",
+                    flexShrink: 0, opacity: 0,
+                    transition: "opacity 0.2s ease",
+                  }}
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="19" x2="19" y2="5"/>
+                    <polyline points="5 5 19 5 19 19"/>
+                  </svg>
+                </div>
               </div>
             </Link>
 
