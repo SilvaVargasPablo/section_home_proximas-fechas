@@ -75,6 +75,20 @@ export default function FechasPasadas() {
                 const arrow = e.currentTarget.querySelector(".arrow-icon") as HTMLElement;
                 if (arrow) arrow.style.opacity = "0";
               }}
+              onTouchStart={e => {
+                (e.currentTarget as HTMLAnchorElement).style.height = "150px";
+                (e.currentTarget as HTMLAnchorElement).style.backgroundColor = item.hoverBg;
+                (e.currentTarget as HTMLAnchorElement).style.color = item.hoverText;
+                const arrow = e.currentTarget.querySelector(".arrow-icon") as HTMLElement;
+                if (arrow) arrow.style.opacity = "1";
+              }}
+              onTouchEnd={e => {
+                (e.currentTarget as HTMLAnchorElement).style.height = "118px";
+                (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "transparent";
+                (e.currentTarget as HTMLAnchorElement).style.color = "#ffffff";
+                const arrow = e.currentTarget.querySelector(".arrow-icon") as HTMLElement;
+                if (arrow) arrow.style.opacity = "0";
+              }}
             >
               <span className="monument row-font-ronda col-ronda">{item.ronda}</span>
               <div className="col-donde flex flex-col justify-center">

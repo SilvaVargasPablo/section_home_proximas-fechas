@@ -106,6 +106,16 @@ export default function ProximasFechas() {
                 (e.currentTarget as HTMLDivElement).style.backgroundColor = "transparent";
                 (e.currentTarget as HTMLDivElement).style.color = "#ffffff";
               }}
+              onTouchStart={e => {
+                (e.currentTarget as HTMLDivElement).style.height = "150px";
+                (e.currentTarget as HTMLDivElement).style.backgroundColor = item.hoverBg;
+                (e.currentTarget as HTMLDivElement).style.color = item.hoverText;
+              }}
+              onTouchEnd={e => {
+                (e.currentTarget as HTMLDivElement).style.height = "118px";
+                (e.currentTarget as HTMLDivElement).style.backgroundColor = "transparent";
+                (e.currentTarget as HTMLDivElement).style.color = "#ffffff";
+              }}
             >
               <span className="monument row-font-ronda col-ronda">{item.ronda}</span>
               <div className="col-donde flex flex-col justify-center">

@@ -149,6 +149,18 @@ export default function EquiposSection() {
                 carRefs.current[index].style.transform = "scale(1) translateX(0)";
               }
             }}
+            onTouchStart={() => {
+              setHoveredIndex(index);
+              if (carRefs.current[index]) {
+                carRefs.current[index].style.transform = "scale(1.1) translateX(4%)";
+              }
+            }}
+            onTouchEnd={() => {
+              setHoveredIndex(null);
+              if (carRefs.current[index]) {
+                carRefs.current[index].style.transform = "scale(1) translateX(0)";
+              }
+            }}
           >
             {/* Flecha top-right visible en hover */}
             <div
