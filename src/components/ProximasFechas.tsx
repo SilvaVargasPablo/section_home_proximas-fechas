@@ -134,7 +134,15 @@ export default function ProximasFechas() {
             {/* Layout MOBILE (apilado) */}
             <div
               className="table-row-mobile items-center justify-between section-px"
-              style={{ minHeight: "72px", paddingTop: "12px", paddingBottom: "12px", backgroundColor: "transparent", color: "#ffffff" }}
+              style={{ minHeight: "72px", paddingTop: "12px", paddingBottom: "12px", backgroundColor: "transparent", color: "#ffffff", transition: "background-color 0.3s ease" }}
+              onTouchStart={e => {
+                (e.currentTarget as HTMLDivElement).style.backgroundColor = item.hoverBg;
+                (e.currentTarget as HTMLDivElement).style.color = item.hoverText;
+              }}
+              onTouchEnd={e => {
+                (e.currentTarget as HTMLDivElement).style.backgroundColor = "transparent";
+                (e.currentTarget as HTMLDivElement).style.color = "#ffffff";
+              }}
             >
               <span className="monument" style={{ fontSize: "28px", width: "44px", flexShrink: 0 }}>{item.ronda}</span>
               <div className="flex flex-col justify-center flex-1 mx-3">
