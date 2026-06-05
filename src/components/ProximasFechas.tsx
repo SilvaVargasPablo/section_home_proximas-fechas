@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import modoRally from "../assets/img/modo-rally.png";
 
 // Datos editables manualmente — reemplazables por respuesta de API
@@ -13,6 +14,7 @@ const rounds = [
     distancia: "340",
     hoverBg: "#ff51c5",
     hoverText: "#ffffff",
+    url: "https://static.vecteezy.com/system/resources/thumbnails/015/633/098/small/car-icon-and-car-drawing-vector.jpg", // ← Reemplazar con la URL real
   },
   {
     ronda: "03",
@@ -22,6 +24,7 @@ const rounds = [
     distancia: "237",
     hoverBg: "#ff9e03",
     hoverText: "#111111",
+    url: "#", // ← Reemplazar con la URL real
   },
   {
     ronda: "04",
@@ -31,6 +34,7 @@ const rounds = [
     distancia: "189",
     hoverBg: "#020eff",
     hoverText: "#ffffff",
+    url: "#", // ← Reemplazar con la URL real
   },
   {
     ronda: "05",
@@ -40,6 +44,7 @@ const rounds = [
     distancia: "340",
     hoverBg: "#ff51c5",
     hoverText: "#ffffff",
+    url: "#", // ← Reemplazar con la URL real
   },
 ];
 
@@ -90,31 +95,36 @@ export default function ProximasFechas() {
         {rounds.map((item, index) => (
           <div key={index} className="border-b border-white/20 cursor-pointer">
             {/* Layout DESKTOP/TABLET (4 columnas responsivas) */}
-            <div
+            <Link
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
               className="table-row-desktop items-center justify-between section-px"
               style={{
                 height: "118px",
                 transition: "height 0.3s ease, background-color 0.3s ease",
+                color: "#ffffff",
+                textDecoration: "none",
               }}
               onMouseEnter={e => {
-                (e.currentTarget as HTMLDivElement).style.height = "150px";
-                (e.currentTarget as HTMLDivElement).style.backgroundColor = item.hoverBg;
-                (e.currentTarget as HTMLDivElement).style.color = item.hoverText;
+                (e.currentTarget as HTMLAnchorElement).style.height = "150px";
+                (e.currentTarget as HTMLAnchorElement).style.backgroundColor = item.hoverBg;
+                (e.currentTarget as HTMLAnchorElement).style.color = item.hoverText;
               }}
               onMouseLeave={e => {
-                (e.currentTarget as HTMLDivElement).style.height = "118px";
-                (e.currentTarget as HTMLDivElement).style.backgroundColor = "transparent";
-                (e.currentTarget as HTMLDivElement).style.color = "#ffffff";
+                (e.currentTarget as HTMLAnchorElement).style.height = "118px";
+                (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "transparent";
+                (e.currentTarget as HTMLAnchorElement).style.color = "#ffffff";
               }}
               onTouchStart={e => {
-                (e.currentTarget as HTMLDivElement).style.height = "150px";
-                (e.currentTarget as HTMLDivElement).style.backgroundColor = item.hoverBg;
-                (e.currentTarget as HTMLDivElement).style.color = item.hoverText;
+                (e.currentTarget as HTMLAnchorElement).style.height = "150px";
+                (e.currentTarget as HTMLAnchorElement).style.backgroundColor = item.hoverBg;
+                (e.currentTarget as HTMLAnchorElement).style.color = item.hoverText;
               }}
               onTouchEnd={e => {
-                (e.currentTarget as HTMLDivElement).style.height = "118px";
-                (e.currentTarget as HTMLDivElement).style.backgroundColor = "transparent";
-                (e.currentTarget as HTMLDivElement).style.color = "#ffffff";
+                (e.currentTarget as HTMLAnchorElement).style.height = "118px";
+                (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "transparent";
+                (e.currentTarget as HTMLAnchorElement).style.color = "#ffffff";
               }}
             >
               <span className="monument row-font-ronda col-ronda">{item.ronda}</span>
@@ -129,19 +139,22 @@ export default function ProximasFechas() {
                 <span className="monument row-font-dist">{item.distancia}</span>
                 <span className="monument uppercase" style={{ fontSize: "12px", opacity: 0.7 }}>km</span>
               </div>
-            </div>
+            </Link>
 
             {/* Layout MOBILE (apilado) */}
-            <div
+            <Link
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
               className="table-row-mobile items-center justify-between section-px"
-              style={{ minHeight: "72px", paddingTop: "12px", paddingBottom: "12px", backgroundColor: "transparent", color: "#ffffff", transition: "background-color 0.3s ease" }}
+              style={{ minHeight: "72px", paddingTop: "12px", paddingBottom: "12px", backgroundColor: "transparent", color: "#ffffff", textDecoration: "none", transition: "background-color 0.3s ease" }}
               onTouchStart={e => {
-                (e.currentTarget as HTMLDivElement).style.backgroundColor = item.hoverBg;
-                (e.currentTarget as HTMLDivElement).style.color = item.hoverText;
+                (e.currentTarget as HTMLAnchorElement).style.backgroundColor = item.hoverBg;
+                (e.currentTarget as HTMLAnchorElement).style.color = item.hoverText;
               }}
               onTouchEnd={e => {
-                (e.currentTarget as HTMLDivElement).style.backgroundColor = "transparent";
-                (e.currentTarget as HTMLDivElement).style.color = "#ffffff";
+                (e.currentTarget as HTMLAnchorElement).style.backgroundColor = "transparent";
+                (e.currentTarget as HTMLAnchorElement).style.color = "#ffffff";
               }}
             >
               <span className="monument" style={{ fontSize: "28px", width: "44px", flexShrink: 0 }}>{item.ronda}</span>
@@ -156,7 +169,7 @@ export default function ProximasFechas() {
                   <span className="monument uppercase" style={{ fontSize: "10px", opacity: 0.7 }}>km</span>
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
         ))}
       </div>

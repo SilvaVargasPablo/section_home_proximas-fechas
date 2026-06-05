@@ -54,6 +54,8 @@ export default function FechasPasadas() {
             {/* Layout DESKTOP/TABLET (4 columnas responsivas) */}
             <Link
               href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
               className="table-row-desktop items-center justify-between section-px group"
               style={{
                 height: "118px",

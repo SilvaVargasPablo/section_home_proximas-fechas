@@ -26,16 +26,16 @@ import fordRojo from "../assets/img/ford_rojo.png";
 import ellipse from "../assets/img/Ellipse_00.png";
 
 const equipos = [
-  { nombre: "Prieto",                  logo: lamborghiniLogo, carImage: toyotaRosa,    bgColor: "#1a6b4a", url: "/equipos/prieto" },
-  { nombre: "Jokerally",               logo: lexusLogo,       carImage: shellAzul,     bgColor: "#2a7a8a", url: "/equipos/jokerally" },
-  { nombre: "JRT",                     logo: lamborghiniLogo, carImage: redbullAzul,   bgColor: "#1a2e6b", url: "/equipos/jrt" },
-  { nombre: "Rosselot Team",           logo: lamborghiniLogo, carImage: toyotaRojo,    bgColor: "#b03080", url: "/equipos/rosselot-team" },
-  { nombre: "Biobio Rally Team",       logo: lamborghiniLogo, carImage: shellRojo,     bgColor: "#c04020", url: "/equipos/biobio-rally-team" },
-  { nombre: "KMR Motorsport",          logo: porsheLogo,      carImage: redbullDorado, bgColor: "#111111", url: "/equipos/kmr-motorsport" },
-  { nombre: "Persia Motorsport",       logo: lamborghiniLogo, carImage: toyotaNegro,   bgColor: "#8b1a1a", url: "/equipos/persia-motorsport" },
-  { nombre: "SAG Rally Team",          logo: lamborghiniLogo, carImage: shellCeleste,  bgColor: "#1a4a8b", url: "/equipos/sag-rally-team" },
-  { nombre: "Conveyor belt technology",logo: roverLogo,       carImage: fordBlanco,    bgColor: "#2a5a7a", url: "/equipos/conveyor-belt-technology" },
-  { nombre: "Domke Racing",            logo: peugeotLogo,     carImage: fordRojo,      bgColor: "#7a3ab0", url: "/equipos/domke-racing" },
+  { nombre: "Prieto",                  logo: lamborghiniLogo, carImage: toyotaRosa,    gradient: "linear-gradient(225deg, #057c4a 0%, #034023 100%)", url: "/equipos/prieto" },
+  { nombre: "Jokerally",               logo: lexusLogo,       carImage: shellAzul,     gradient: "linear-gradient(225deg, #7a92b8 0%, #3e5c98 100%)", url: "/equipos/jokerally" },
+  { nombre: "JRT",                     logo: lamborghiniLogo, carImage: redbullAzul,   gradient: "linear-gradient(225deg, #155ced 0%, #052250 100%)", url: "/equipos/jrt" },
+  { nombre: "Rosselot Team",           logo: lamborghiniLogo, carImage: toyotaRojo,    gradient: "linear-gradient(225deg, #b516ff 0%, #f58823 100%)", url: "/equipos/rosselot-team" },
+  { nombre: "Biobio Rally Team",       logo: lamborghiniLogo, carImage: shellRojo,     gradient: "linear-gradient(225deg, #0071dc 0%, #f65d20 100%)", url: "/equipos/biobio-rally-team" },
+  { nombre: "KMR Motorsport",          logo: porsheLogo,      carImage: redbullDorado, gradient: "linear-gradient(225deg, #333542 0%, #212227 100%)", url: "/equipos/kmr-motorsport" },
+  { nombre: "Persia Motorsport",       logo: lamborghiniLogo, carImage: toyotaNegro,   gradient: "linear-gradient(225deg, #ab0a0d 0%, #4f0304 100%)", url: "/equipos/persia-motorsport" },
+  { nombre: "SAG Rally Team",          logo: lamborghiniLogo, carImage: shellCeleste,  gradient: "linear-gradient(225deg, #3d80dd 0%, #0149ac 100%)", url: "/equipos/sag-rally-team" },
+  { nombre: "Conveyor belt technology",logo: roverLogo,       carImage: fordBlanco,    gradient: "linear-gradient(225deg, #c6d4e6 0%, #324c73 100%)", url: "/equipos/conveyor-belt-technology" },
+  { nombre: "Domke Racing",            logo: peugeotLogo,     carImage: fordRojo,      gradient: "linear-gradient(225deg, #18b1ed 0%, #192929 100%)", url: "/equipos/domke-racing" },
 ];
 
 export default function EquiposSection() {
@@ -128,7 +128,7 @@ export default function EquiposSection() {
             rel="noopener noreferrer"
             className="equipo-card"
             style={{
-              backgroundColor: equipo.bgColor,
+              background: equipo.gradient,
               borderRadius: "8px",
               overflow: "hidden",
               position: "relative",
