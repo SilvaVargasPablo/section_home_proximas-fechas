@@ -216,3 +216,22 @@ body {
     height: 300px;
   }
 }
+
+/* ─── Contador section ──────────────────────────────────────────────────────── */
+.contador-numero {
+  font-size: clamp(40px, 8.5vw, 130px);
+}
+
+.contador-separador {
+  font-size: clamp(40px, 8.5vw, 130px);
+}
+
+.contador-label {
+  font-size: clamp(14px, 1.8vw, 28px);
+}
+
+@media (max-width: 639px) {
+  .contador-label {
+    font-size: clamp(10px, 3vw, 16px);
+  }
+}
