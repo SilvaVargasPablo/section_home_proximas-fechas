@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react";
 
 // ── Configuración ajustable ──────────────────────────────────────────────────
-const TARGET_DATE = new Date("2026-07-23T00:00:00"); // ← Cambia esta fecha
-const EVENT_CITY  = "CURICÓ";                         // ← Nombre de la ciudad
+const TARGET_DATE = new Date("2026-06-16T00:00:00"); // ← Cambia esta fecha
+const EVENT_CITY = "CURICÓ";                         // ← Nombre de la ciudad
 const EVENT_DATES = "DEL 13 AL 15 DE MARZO";          // ← Fechas del evento
-const CTA_URL     = "#";                              // ← URL del botón VER MÁS
+const CTA_URL = "#";                              // ← URL del botón VER MÁS
 // ────────────────────────────────────────────────────────────────────────────
 
 function calcTimeLeft(target: Date) {
@@ -14,9 +14,9 @@ function calcTimeLeft(target: Date) {
   if (diff <= 0) return { dias: 0, hrs: 0, min: 0, seg: 0 };
   return {
     dias: Math.floor(diff / (1000 * 60 * 60 * 24)),
-    hrs:  Math.floor((diff / (1000 * 60 * 60)) % 24),
-    min:  Math.floor((diff / (1000 * 60)) % 60),
-    seg:  Math.floor((diff / 1000) % 60),
+    hrs: Math.floor((diff / (1000 * 60 * 60)) % 24),
+    min: Math.floor((diff / (1000 * 60)) % 60),
+    seg: Math.floor((diff / 1000) % 60),
   };
 }
 
@@ -93,15 +93,15 @@ export default function Contador() {
           {EVENT_DATES}
         </p>
 
-        {/* Countdown + Labels — ocupa todo el ancho con section-px */}
-        <div className="section-px" style={{ width: "100%" }}>
+        {/* Countdown + Labels — con padding lateral para respetar márgenes */}
+        <div className="contador-wrapper" style={{ width: "100%" }}>
           {/* Fila de números */}
           <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
             {[
               { value: pad(time.dias) },
-              { value: pad(time.hrs)  },
-              { value: pad(time.min)  },
-              { value: pad(time.seg)  },
+              { value: pad(time.hrs) },
+              { value: pad(time.min) },
+              { value: pad(time.seg) },
             ].map((unit, i) => (
               <div key={i} style={{ display: "flex", alignItems: "center", flex: 1 }}>
                 <span
